@@ -44,5 +44,4 @@ func ReadLines(path string) ([]string, error) {
 
 func main() {
 	PrintLogo()
-	fmt.Println("hi")
 }
