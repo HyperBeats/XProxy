@@ -11,7 +11,7 @@
 - golang 1.18+
 
 ### Download:
-- download the stable version [here](https://github.com/Its-Vichy/XProxy/releases/tag/stable).
+- download the lasted compiled version [here](https://github.com/Its-Vichy/XProxy/releases/tag/lasted).
 ---
 
 <p align="center">
