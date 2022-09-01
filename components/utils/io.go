@@ -2,11 +2,12 @@ package utils
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 )
 
 func ReadLines(path string) ([]string, error) {
-	file, err := os.Open(path)
+	file, err := os.Open(fmt.Sprintf("data/%s", path))
 	if err != nil {
 		return nil, err
 	}
@@ -25,7 +26,7 @@ func ReadLines(path string) ([]string, error) {
 }
 
 func AppendFile(FileName string, Content string) {
-	File, err := os.OpenFile(FileName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	File, err := os.OpenFile(fmt.Sprintf("data/%s", FileName), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return
 	}

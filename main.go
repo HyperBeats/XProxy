@@ -29,11 +29,11 @@ func CheckProxy(Proxy string) {
 	_, err := ProxyReq("https://discord.com", Proxy)
 
 	if err != nil {
-		utils.Log(fmt.Sprintf("[INVALID] %s", Proxy))
+		utils.Log(fmt.Sprintf("[DEAD]  %s", Proxy))
 		return
 	}
 	
-	utils.Log(fmt.Sprintf("[VALID] %s", Proxy))
+	utils.Log(fmt.Sprintf("[ALIVE] %s", Proxy))
 	utils.AppendFile("checked.txt", Proxy)
 }
 
