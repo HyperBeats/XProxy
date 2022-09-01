@@ -5,3 +5,4 @@ timeout = 3
 [options]
 scrape = true
 threads = 500
+scrape_threads = 50

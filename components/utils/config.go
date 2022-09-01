@@ -4,6 +4,7 @@ import "github.com/BurntSushi/toml"
 
 var (
 	Config = ConfigStruct{}
+	Valid = 0
 )
 
 type ConfigStruct struct {
@@ -15,6 +16,7 @@ type ConfigStruct struct {
 	Options struct {
 		Scrape  bool `toml:"scrape"`
 		Threads int  `toml:"threads"`
+		ScrapeThreads int `toml:"scrape_threads"`
 	} `toml:"options"`
 }
 
