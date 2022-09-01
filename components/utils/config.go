@@ -39,10 +39,6 @@ func GetActualIp() string {
 	
 	defer res.Body.Close()
 
-	if res.StatusCode == 403 || res.StatusCode == 404 {
-		return ""
-	}
-
 	content, err := ioutil.ReadAll(res.Body)
 	if HandleError(err) {
 		return ""

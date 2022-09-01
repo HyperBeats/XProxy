@@ -14,6 +14,7 @@
 
 ### Requirements:
 - golang 1.18+
+- python 3.X
 
 ### Download:
 - download the lasted compiled version [here](https://github.com/Its-Vichy/XProxy/releases/tag/lasted).
@@ -24,6 +25,9 @@
 ### Known issue:
 - [FIXED] Checker crash if there is invalid format into proxies file, this can happen if you are using scraper.
 - [FIXED] `fixed: "bufio.Scanner: token too long"`, this error happen when you are loading large proxies file (100K+)
+
+### Utils:
+- If you want to split checked proxies into socks4, socks5, http files you can use `parser.py` file.
 
 ---
 

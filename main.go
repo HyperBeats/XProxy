@@ -23,7 +23,6 @@ func main() {
 	}
 
 	proxies = utils.RemoveDuplicateStr(proxies)
-
 	utils.Log(fmt.Sprintf("Loaded %d proxies", len(proxies)))
 
 	StartTime := time.Now()
