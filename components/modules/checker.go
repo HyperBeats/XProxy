@@ -56,7 +56,9 @@ func CheckProxy(Proxy string) {
 	response, err := ProxyReq("https://api.ipify.org", Proxy)
 
 	if err != nil {
-		utils.Log(fmt.Sprintf("[DEAD]  %s", Proxy))
+		if utils.Config.Options.ShowDeadProxies {
+			utils.Log(fmt.Sprintf("[DEAD]  %s", Proxy))
+		}
 		return
 	}
 

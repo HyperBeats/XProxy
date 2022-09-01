@@ -8,6 +8,10 @@
 - check for proxy anonymity level.
 - ultra fast.
 
+### Speed:
+- 100K+ scrape under 5s.
+- (800 goroutines) Checked 45973 proxies in 329.308784s.
+
 ### Requirements:
 - golang 1.18+
 
@@ -19,6 +23,7 @@
 
 ### Known issue:
 - [FIXED] Checker crash if there is invalid format into proxies file, this can happen if you are using scraper.
+- [FIXED] `fixed: "bufio.Scanner: token too long"`, this error happen when you are loading large proxies file (100K+)
 
 ---
 

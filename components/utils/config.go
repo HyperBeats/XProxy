@@ -23,6 +23,7 @@ type ConfigStruct struct {
 		Threads int  `toml:"threads"`
 		ScrapeThreads int `toml:"scrape_threads"`
 		SaveTransparent bool `toml:"save_transparent"`
+		ShowDeadProxies bool `toml:"show_dead_proxies"`
 	} `toml:"options"`
 }
 
