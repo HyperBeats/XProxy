@@ -4,26 +4,41 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
+// fixed: "bufio.Scanner: token too long"
+// https://stackoverflow.com/questions/8757389/reading-a-file-line-by-line-in-go
 func ReadLines(path string) ([]string, error) {
-	file, err := os.Open(fmt.Sprintf("data/%s", path))
-	if HandleError(err) {
+	f, err := os.Open(fmt.Sprintf("data/%s", path))
+	if err != nil {
 		return nil, err
 	}
-	defer file.Close()
+	defer f.Close()
 
-	var lines []string
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		if scanner.Text() == "" {
-			continue
+	r := bufio.NewReader(f)
+	bytes := []byte{}
+	lines := []string{}
+	for {
+		line, isPrefix, err := r.ReadLine()
+		if err != nil {
+			break
 		}
-
-		lines = append(lines, scanner.Text())
+		bytes = append(bytes, line...)
+		if !isPrefix {
+			str := strings.TrimSpace(string(bytes))
+			if len(str) > 0 {
+				lines = append(lines, str)
+				bytes = []byte{}
+			}
+		}
 	}
-	return lines, scanner.Err()
+	if len(bytes) > 0 {
+		lines = append(lines, string(bytes))
+	}
+	return lines, nil
 }
+
 
 func AppendFile(FileName string, Content string) {
 	File, err := os.OpenFile(fmt.Sprintf("data/%s", FileName), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
