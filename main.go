@@ -26,14 +26,14 @@ func ProxyReq(req string, proxy string) (res *http.Response, err error) {
 }
 
 func CheckProxy(Proxy string) {
-	_, err := ProxyReq("https://google.com", Proxy)
+	_, err := ProxyReq("https://discord.com", Proxy)
 
-	if err == nil {
-		utils.Log(fmt.Sprintf("[VALID] %s", Proxy))
-
-	} else {
-		utils.Log(fmt.Sprintf("[INVALID] %s", Proxy))
+	if err != nil {
+		utils.Log(fmt.Sprintf("[INVALID] %s (%v)", Proxy, err.Error()))
+		return
 	}
+	
+	utils.Log(fmt.Sprintf("[VALID] %s", Proxy))
 }
 
 func main() {
