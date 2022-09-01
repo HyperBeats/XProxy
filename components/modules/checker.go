@@ -15,7 +15,7 @@ import (
 func GetHttpTransport(Proxy string) *http.Transport {
 	ProxyUrl, err := url.Parse(Proxy)
 	if utils.HandleError(err) {
-		return nil
+		return &http.Transport{}
 	}
 
 	return &http.Transport{

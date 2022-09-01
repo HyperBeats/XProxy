@@ -3,9 +3,10 @@
 `Powerfull proxy scraper and checker.`
 
 ### Features:
-- scrape proxies from url/public proxy list
-- Support `http - socks4 - socks5`
-- ultra fast
+- scrape proxies from url/public proxy list.
+- Support `http - socks4 - socks5`.
+- check for proxy anonymity level.
+- ultra fast.
 
 ### Requirements:
 - golang 1.18+
@@ -17,7 +18,7 @@
     [ ] Crawl html page with regex
 
 ### Known issue:
-- checker crash if there is invalid format into proxies file, this can happen if you are using scraper.
+- [FIXED] Checker crash if there is invalid format into proxies file, this can happen if you are using scraper.
 
 ---
 
