@@ -1,8 +1,8 @@
 [filter]
 domain = "https://discord.com"
-timeout = 3
+timeout = 10
 
 [options]
 scrape = true
-threads = 500
+threads = 1000
 scrape_threads = 50
