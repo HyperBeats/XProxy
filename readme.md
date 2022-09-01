@@ -12,6 +12,13 @@
 
 ### Download:
 - download the lasted compiled version [here](https://github.com/Its-Vichy/XProxy/releases/tag/lasted).
+
+### Todo:
+    [ ] Crawl html page with regex
+
+### Known issue:
+- checker crash if there is invalid format into proxies file, this can happen if you are using scraper.
+
 ---
 
 <p align="center">
