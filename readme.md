@@ -2,12 +2,18 @@
 
 `Powerfull proxy scraper and checker.`
 
+### Features:
+- scrape proxies from url/public proxy list
+- ultra fast
+
 ### Requirements:
 - golang 1.18+
 
-### todo:
+### Todo:
 - socks4/5 support
 
+### Download:
+- download the stable version [here](https://github.com/Its-Vichy/XProxy/releases/tag/stable).
 ---
 
 <p align="center">
