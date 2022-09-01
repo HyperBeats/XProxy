@@ -1,8 +1,8 @@
 # This script is helpfull to parse checked proxies.
 
-with open('./socks4.txt', 'w+') as socks4_fd:
-    with open('./socks5.txt', 'w+') as socks5_fd:
-        with open('./http.txt', 'w+') as http_fd:
+with open('./script/socks4.txt', 'w+') as socks4_fd:
+    with open('./script/socks5.txt', 'w+') as socks5_fd:
+        with open('./script/http.txt', 'w+') as http_fd:
             for proxy in list(set(open('./data/checked.txt', 'r+').read().splitlines())):
                 if 'socks4' in proxy:
                     socks4_fd.write(f'{proxy.split("://")[1]}\n')
