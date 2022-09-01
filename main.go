@@ -13,12 +13,16 @@ func main() {
 	utils.PrintLogo()
 	utils.LoadConfig()
 
-	modules.Scrape()
-
+	if utils.Config.Options.Scrape {
+		modules.Scrape()
+	}
+	
 	proxies, err := utils.ReadLines("proxies.txt")
 	if utils.HandleError(err) {
 		return
 	}
+
+	proxies = utils.RemoveDuplicateStr(proxies)
 
 	utils.Log(fmt.Sprintf("Loaded %d proxies", len(proxies)))
 

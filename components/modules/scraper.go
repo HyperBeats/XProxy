@@ -49,10 +49,9 @@ func Scrape() {
 
 		// type,url
 		s := strings.Split(url, ",")
-		fmt.Println(s)
 
-		go func(url string) {
-			ScrapeUrl(url)
+		go func(u string) {
+			ScrapeUrl(u)
 			c.Done()
 		}(s[1])
 	}
