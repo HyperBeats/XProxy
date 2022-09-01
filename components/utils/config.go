@@ -18,6 +18,10 @@ type ConfigStruct struct {
 		Timeout int    `toml:"timeout"`
 	} `toml:"filter"`
 
+	Dev struct {
+		Debug bool    `toml:"debug"`
+	} `toml:"dev"`
+
 	Options struct {
 		Scrape  bool `toml:"scrape"`
 		Threads int  `toml:"threads"`

@@ -36,7 +36,9 @@ func Log(Content string) {
 // todo: use
 func HandleError(Err error) bool {
 	if Err != nil {
-		fmt.Println(Err)
+		if Config.Dev.Debug {
+			fmt.Println(Err)
+		}
 		return true
 	}
 
