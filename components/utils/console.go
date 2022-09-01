@@ -14,14 +14,13 @@ func PrintLogo() {
 	screen.MoveTopLeft()
 
 	fmt.Println(`
-	██╗  ██╗██████╗ ██████╗  ██████╗ ██╗  ██╗██╗   ██╗
-	╚██╗██╔╝██╔══██╗██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝
-	 ╚███╔╝ ██████╔╝██████╔╝██║   ██║ ╚███╔╝  ╚████╔╝ 
-	 ██╔██╗ ██╔═══╝ ██╔══██╗██║   ██║ ██╔██╗   ╚██╔╝  
-	██╔╝ ██╗██║     ██║  ██║╚██████╔╝██╔╝ ██╗   ██║   
-	╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   
-													
-	`)
+	__  ______                      
+	\ \/ /  _ \ _ __ _____  ___   _ 
+	 \  /| |_) | '__/ _ \ \/ / | | |
+	 /  \|  __/| | | (_) >  <| |_| |
+	/_/\_\_|   |_|  \___/_/\_\\__, |
+							  |___/ 
+   `)
 }
 
 func Log(Content string) {
@@ -32,4 +31,14 @@ func Log(Content string) {
 	content = strings.ReplaceAll(content, "ALIVE", "<fg=61eb42>ALIVE</>")
 
 	color.Println(content)
+}
+
+// todo: use
+func HandleError(Err error) bool {
+	if Err != nil {
+		fmt.Println(Err)
+		return true
+	}
+
+	return false
 }

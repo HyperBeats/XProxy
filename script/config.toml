@@ -1,0 +1,7 @@
+[filter]
+domain = "https://discord.com"
+timeout = 3
+
+[options]
+scrape = true
+threads = 500

@@ -3,6 +3,7 @@ module Proxy
 go 1.18
 
 require (
+	github.com/BurntSushi/toml v1.2.0
 	github.com/gookit/color v1.5.2
 	github.com/inancgumus/screen v0.0.0-20190314163918-06e984b86ed3
 	github.com/zenthangplus/goccm v1.1.2

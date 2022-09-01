@@ -11,22 +11,31 @@ import (
 )
 
 func ProxyReq(req string, proxy string) (res *http.Response, err error) {
-	timeout := time.Duration(3 * time.Second)
-	proxyURL, err := url.Parse("http://" + proxy)
-	reqURL, err := url.Parse(req)
-
-	transport := &http.Transport{Proxy: http.ProxyURL(proxyURL)}
-	client := &http.Client{
-		Timeout:   timeout,
-		Transport: transport,
+	ProxyUrl, err := url.Parse("http://" + proxy)
+	if utils.HandleError(err) {
+		return nil, err
 	}
 
-	res, err = client.Get(reqURL.String())
-	return res, err
+	ReqUrl, err := url.Parse(req)
+	if utils.HandleError(err) {
+		return nil, err
+	}
+
+	client := &http.Client{
+		Timeout:   time.Duration(time.Duration(utils.Config.Filter.Timeout) * time.Second),
+		Transport: &http.Transport{Proxy: http.ProxyURL(ProxyUrl)},
+	}
+
+	res, err = client.Get(ReqUrl.String())
+	if utils.HandleError(err) {
+		return nil, err
+	}
+
+	return res, nil
 }
 
 func CheckProxy(Proxy string) {
-	_, err := ProxyReq("https://discord.com", Proxy)
+	_, err := ProxyReq(utils.Config.Filter.Domain, Proxy)
 
 	if err != nil {
 		utils.Log(fmt.Sprintf("[DEAD]  %s", Proxy))
@@ -39,9 +48,10 @@ func CheckProxy(Proxy string) {
 
 func main() {
 	utils.PrintLogo()
+	utils.LoadConfig()
 
 	proxies, err := utils.ReadLines("proxies.txt")
-	if err != nil {
+	if utils.HandleError(err) {
 		return
 	}
 

@@ -8,7 +8,7 @@ import (
 
 func ReadLines(path string) ([]string, error) {
 	file, err := os.Open(fmt.Sprintf("data/%s", path))
-	if err != nil {
+	if HandleError(err) {
 		return nil, err
 	}
 	defer file.Close()
@@ -27,12 +27,12 @@ func ReadLines(path string) ([]string, error) {
 
 func AppendFile(FileName string, Content string) {
 	File, err := os.OpenFile(fmt.Sprintf("data/%s", FileName), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
+	if HandleError(err) {
 		return
 	}
 
 	_, err = File.WriteString(Content + "\n")
-	if err != nil {
+	if HandleError(err) {
 		return
 	}
 

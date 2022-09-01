@@ -1,5 +1,5 @@
 @echo off
 cd ..
-title XProxy
+title XProxy - github.com/its-vichy
 go run .
 pause
