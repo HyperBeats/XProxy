@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/zenthangplus/goccm"
 	"Proxy/components/utils"
+	"github.com/zenthangplus/goccm"
 )
 
 func CheckProxy(Proxy string) {
@@ -18,14 +18,14 @@ func main() {
 	}
 
 	c := goccm.New(30)
-    for _, proxy := range proxies {
+	for _, proxy := range proxies {
 		c.Wait()
 
-        go func(proxy string) {
+		go func(proxy string) {
 			CheckProxy(proxy)
-            c.Done()
-        }(proxy)
-    }
-	
+			c.Done()
+		}(proxy)
+	}
+
 	c.WaitAllDone()
 }
