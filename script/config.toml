@@ -1,8 +1,8 @@
 [filter]
-domain = "https://discord.com"   # put "google.com" if you want google working proxies.
 timeout = 10                     # proxies timeout in seconds.
 
 [options]
-scrape = true                    # scrape proxies from url.csv.
+scrape = false                    # scrape proxies from url.csv.
 threads = 500                    # maximum checking threads.
 scrape_threads = 50              # maximum threads while scraping proxies.
+save_transparent = false         # transparent proxies don't hide your real IP.

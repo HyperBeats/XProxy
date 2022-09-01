@@ -4,13 +4,11 @@
 
 ### Features:
 - scrape proxies from url/public proxy list
+- Support `http - socks4 - socks5`
 - ultra fast
 
 ### Requirements:
 - golang 1.18+
-
-### Todo:
-- socks4/5 support
 
 ### Download:
 - download the stable version [here](https://github.com/Its-Vichy/XProxy/releases/tag/stable).

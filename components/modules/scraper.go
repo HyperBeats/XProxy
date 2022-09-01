@@ -11,7 +11,7 @@ import (
 	"github.com/zenthangplus/goccm"
 )
 
-func ScrapeUrl(Url string) {
+func ScrapeUrl(Url string, ProxyType string) {
 	res, err := http.Get(Url)
 	if utils.HandleError(err) {
 		return
@@ -35,7 +35,7 @@ func ScrapeUrl(Url string) {
 			continue
 		}
 
-		utils.AppendFile("proxies.txt", proxy)
+		utils.AppendFile("proxies.txt", fmt.Sprintf("%s://%s", ProxyType, proxy))
 	}
 }
 
@@ -54,10 +54,10 @@ func Scrape() {
 		// type,url
 		s := strings.Split(url, ",")
 
-		go func(u string) {
-			ScrapeUrl(u)
+		go func(u string, t string) {
+			ScrapeUrl(u, t)
 			c.Done()
-		}(s[1])
+		}(s[1], s[0])
 	}
 
 	c.WaitAllDone()
