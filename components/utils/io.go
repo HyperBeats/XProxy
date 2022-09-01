@@ -23,3 +23,17 @@ func ReadLines(path string) ([]string, error) {
 	}
 	return lines, scanner.Err()
 }
+
+func AppendFile(FileName string, Content string) {
+	File, err := os.OpenFile(FileName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		return
+	}
+
+	_, err = File.WriteString(Content + "\n")
+	if err != nil {
+		return
+	}
+
+	File.Close()
+}

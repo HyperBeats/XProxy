@@ -11,7 +11,7 @@ import (
 )
 
 func ProxyReq(req string, proxy string) (res *http.Response, err error) {
-	timeout := time.Duration(5 * time.Second)
+	timeout := time.Duration(3 * time.Second)
 	proxyURL, err := url.Parse("http://" + proxy)
 	reqURL, err := url.Parse(req)
 
@@ -29,11 +29,12 @@ func CheckProxy(Proxy string) {
 	_, err := ProxyReq("https://discord.com", Proxy)
 
 	if err != nil {
-		utils.Log(fmt.Sprintf("[INVALID] %s (%v)", Proxy, err.Error()))
+		utils.Log(fmt.Sprintf("[INVALID] %s", Proxy))
 		return
 	}
 	
 	utils.Log(fmt.Sprintf("[VALID] %s", Proxy))
+	utils.AppendFile("checked.txt", Proxy)
 }
 
 func main() {
@@ -46,7 +47,8 @@ func main() {
 
 	utils.Log(fmt.Sprintf("Loaded %d proxies", len(proxies)))
 
-	c := goccm.New(500)
+	StartTime := time.Now()
+	c := goccm.New(800)
 	for _, proxy := range proxies {
 		c.Wait()
 
@@ -57,4 +59,5 @@ func main() {
 	}
 
 	c.WaitAllDone()
+	utils.Log(fmt.Sprintf("Checked %d proxies in %fs", len(proxies), time.Since(StartTime).Seconds()))
 }
