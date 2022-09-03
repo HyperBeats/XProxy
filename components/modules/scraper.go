@@ -51,7 +51,7 @@ func Scrape() {
 	for _, url := range url_list {
 		c.Wait()
 
-		// type,url
+		// * type,url
 		s := strings.Split(url, ",")
 
 		go func(u string, t string) {

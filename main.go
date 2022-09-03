@@ -36,7 +36,7 @@ func main() {
 			c.Done()
 		}(proxy)
 	}
-
+	
 	c.WaitAllDone()
 	utils.Log(fmt.Sprintf("Checked %d proxies in %fs", len(proxies), time.Since(StartTime).Seconds()))
 }
