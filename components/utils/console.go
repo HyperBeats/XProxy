@@ -33,7 +33,6 @@ func Log(Content string) {
 	color.Println(content)
 }
 
-// todo: use
 func HandleError(Err error) bool {
 	if Err != nil {
 		if Config.Dev.Debug {

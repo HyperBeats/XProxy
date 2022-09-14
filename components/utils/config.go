@@ -8,24 +8,24 @@ import (
 )
 
 var (
-	Config = ConfigStruct{}
+	Config   = ConfigStruct{}
 	ActualIp string
-	Valid = 0
+	Valid    = 0
 )
 
 type ConfigStruct struct {
 	Filter struct {
-		Timeout int    `toml:"timeout"`
+		Timeout int `toml:"timeout"`
 	} `toml:"filter"`
 
 	Dev struct {
-		Debug bool    `toml:"debug"`
+		Debug bool `toml:"debug"`
 	} `toml:"dev"`
 
 	Options struct {
-		Scrape  bool `toml:"scrape"`
-		Threads int  `toml:"threads"`
-		ScrapeThreads int `toml:"scrape_threads"`
+		Scrape          bool `toml:"scrape"`
+		Threads         int  `toml:"threads"`
+		ScrapeThreads   int  `toml:"scrape_threads"`
 		SaveTransparent bool `toml:"save_transparent"`
 		ShowDeadProxies bool `toml:"show_dead_proxies"`
 	} `toml:"options"`
@@ -36,7 +36,7 @@ func GetActualIp() string {
 	if HandleError(err) {
 		return ""
 	}
-	
+
 	defer res.Body.Close()
 
 	content, err := ioutil.ReadAll(res.Body)

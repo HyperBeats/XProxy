@@ -16,7 +16,7 @@ func main() {
 	if utils.Config.Options.Scrape {
 		modules.Scrape()
 	}
-	
+
 	proxies, err := utils.ReadLines("proxies.txt")
 	if utils.HandleError(err) {
 		return
@@ -36,7 +36,7 @@ func main() {
 			c.Done()
 		}(proxy)
 	}
-	
+
 	c.WaitAllDone()
 	utils.Log(fmt.Sprintf("Checked %d proxies in %fs", len(proxies), time.Since(StartTime).Seconds()))
 }

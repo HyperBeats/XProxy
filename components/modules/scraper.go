@@ -5,18 +5,29 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"regexp"
 	"strings"
 	"time"
 
 	"github.com/zenthangplus/goccm"
 )
 
+var (
+	proxyRegex = regexp.MustCompile("([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}):([0-9]{1,5})")
+)
+
 func ScrapeUrl(Url string, ProxyType string) {
-	res, err := http.Get(Url)
+	fmt.Println(Url)
+
+	client := &http.Client{
+		Timeout: time.Second * 5,
+	}
+
+	res, err := client.Get(Url)
 	if utils.HandleError(err) {
 		return
 	}
-	
+
 	defer res.Body.Close()
 
 	if res.StatusCode == 403 || res.StatusCode == 404 {
@@ -27,14 +38,8 @@ func ScrapeUrl(Url string, ProxyType string) {
 	if utils.HandleError(err) {
 		return
 	}
-	
-	lines := strings.Split(string(content), "\n")
 
-	for _, proxy := range lines {
-		if proxy == "" {
-			continue
-		}
-
+	for _, proxy := range proxyRegex.FindAllString(string(content), -1) {
 		utils.AppendFile("proxies.txt", fmt.Sprintf("%s://%s", ProxyType, proxy))
 	}
 }
@@ -44,7 +49,7 @@ func Scrape() {
 	if utils.HandleError(err) {
 		return
 	}
-	
+
 	StartTime := time.Now()
 	c := goccm.New(utils.Config.Options.ScrapeThreads)
 

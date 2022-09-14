@@ -1,5 +1,5 @@
 [filter]
-timeout = 10                     # proxies timeout in seconds.
+timeout = 5                     # proxies timeout in seconds.
 
 [options]
 scrape = true                    # scrape proxies from url.csv.

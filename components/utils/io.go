@@ -10,32 +10,37 @@ import (
 // fixed: "bufio.Scanner: token too long"
 // https://stackoverflow.com/questions/8757389/reading-a-file-line-by-line-in-go
 func ReadLines(path string) ([]string, error) {
-	f, err := os.Open(fmt.Sprintf("data/%s", path))
-	if err != nil {
+	f, err := os.Open(fmt.Sprintf("data/%s", path))	
+	if HandleError(err) {
 		return nil, err
 	}
+
 	defer f.Close()
 
 	r := bufio.NewReader(f)
-	bytes := []byte{}
-	lines := []string{}
+	bytes, lines := []byte{}, []string{}
+
 	for {
 		line, isPrefix, err := r.ReadLine()
-		if err != nil {
+		if HandleError(err) {
 			break
 		}
+
 		bytes = append(bytes, line...)
 		if !isPrefix {
 			str := strings.TrimSpace(string(bytes))
+			
 			if len(str) > 0 {
 				lines = append(lines, str)
 				bytes = []byte{}
 			}
 		}
 	}
+
 	if len(bytes) > 0 {
 		lines = append(lines, string(bytes))
 	}
+
 	return lines, nil
 }
 
@@ -55,13 +60,14 @@ func AppendFile(FileName string, Content string) {
 }
 
 func RemoveDuplicateStr(strSlice []string) []string {
-    allKeys := make(map[string]bool)
-    list := []string{}
+    allKeys, list := make(map[string]bool), []string{}
+
     for _, item := range strSlice {
         if _, value := allKeys[item]; !value {
             allKeys[item] = true
             list = append(list, item)
         }
     }
+	
     return list
 }
