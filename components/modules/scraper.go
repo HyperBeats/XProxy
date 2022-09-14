@@ -57,19 +57,21 @@ func Scrape() {
 		return
 	}
 
-	StartTime := time.Now()
-	c := goccm.New(utils.Config.Options.ScrapeThreads)
-
-	for _, url := range url_list {
+	StartTime, c, crawled := time.Now(), goccm.New(utils.Config.Options.ScrapeThreads), 0
+	
+	for i, url := range url_list {
 		c.Wait()
 
 		// * type,url
 		s := strings.Split(url, ",")
 
-		go func(u string, t string) {
+		go func(u string, t string, n int) {
 			ScrapeUrl(u, t)
+			crawled++
+			
+			utils.Log(fmt.Sprintf("Scraped page #%d (%d/%d)", n, crawled, len(url_list)))
 			c.Done()
-		}(s[1], s[0])
+		}(s[1], s[0], i)
 	}
 
 	c.WaitAllDone()

@@ -30,6 +30,10 @@ func Log(Content string) {
 	content = strings.ReplaceAll(content, "DEAD", "<fg=f5291b>DEAD</>")
 	content = strings.ReplaceAll(content, "ALIVE", "<fg=61eb42>ALIVE</>")
 
+	for _, element := range []string{"(", ")", "[", "]", "#"} {
+		content = strings.ReplaceAll(content, element, fmt.Sprintf("<fg=3d3d3d>%s</>", element))
+	}
+
 	color.Println(content)
 }
 
