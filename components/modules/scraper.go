@@ -17,8 +17,6 @@ var (
 )
 
 func ScrapeUrl(Url string, ProxyType string) {
-	fmt.Println(Url)
-
 	client := &http.Client{
 		Timeout: time.Second * 5,
 	}
