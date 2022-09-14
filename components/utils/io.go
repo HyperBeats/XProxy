@@ -68,6 +68,9 @@ func RemoveDuplicateStr(strSlice []string) []string {
             list = append(list, item)
         }
     }
-	
+
     return list
 }
+
+// Remove line from file
+func 
