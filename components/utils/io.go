@@ -73,7 +73,7 @@ func RemoveDuplicateStr(strSlice []string) []string {
 }
 
 func RemoveLine(path string, line string) {
-	file, err := os.Open(path)
+	file, err := os.Open(fmt.Sprintf("data/%s", path))
 	if HandleError(err) {
 		return
 	}
