@@ -7,6 +7,7 @@ threads = 800                    # maximum checking threads.
 scrape_threads = 50              # maximum threads while scraping proxies.
 save_transparent = false         # transparent proxies don't hide your real IP.
 show_dead_proxies = false        # print dead proxies in console, disable it can give better performances
+remove_url_on_error = true       # remove url from csv when program got error while scrapping page (timeout etc..)
 
 [dev]
 debug = true                     # show errors

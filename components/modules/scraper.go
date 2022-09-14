@@ -16,6 +16,11 @@ var (
 	proxyRegex = regexp.MustCompile("([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}):([0-9]{1,5})")
 )
 
+func RemoveUrl(Url string, ProxyType string) {
+	utils.Log(fmt.Sprintf("Dead link: %s", Url))
+	utils.RemoveLine("url.csv", fmt.Sprintf("%s,%s", ProxyType, Url))
+}
+
 func ScrapeUrl(Url string, ProxyType string) {
 	client := &http.Client{
 		Timeout: time.Second * 5,
@@ -23,15 +28,17 @@ func ScrapeUrl(Url string, ProxyType string) {
 
 	res, err := client.Get(Url)
 	if utils.HandleError(err) {
+		if utils.Config.Options.RemoveUrlOnError {
+			RemoveUrl(Url, ProxyType)
+		}
 		return
 	}
 
 	defer res.Body.Close()
 
-	if res.StatusCode == 403 || res.StatusCode == 404 {
-		utils.Log(fmt.Sprintf("Dead link: %s", Url))
-		fmt.Println(fmt.Sprintf("%s,%s", ProxyType, Url))
-		utils.RemoveLine("url.csv", fmt.Sprintf("%s,%s", ProxyType, Url))
+	if res.StatusCode == 403 || res.StatusCode == 404 || res.StatusCode == 401 {
+		RemoveUrl(Url, ProxyType)
+		return
 	}
 
 	content, err := ioutil.ReadAll(res.Body)

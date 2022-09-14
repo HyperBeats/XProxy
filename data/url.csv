@@ -28,7 +28,6 @@ http,https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw
 http,https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list.txt
 http,https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list
 http,https://raw.githubusercontent.com/HyperBeats/proxy-list/main/http.txt
-http,https://raw.githubusercontent.com/HyperBeats/proxy-list/main/https.txt
 http,https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-http.txt
 http,https://raw.githubusercontent.com/mmpx12/proxy-list/master/http.txt
 http,https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/http.txt
@@ -66,7 +65,6 @@ http,https://www.my-proxy.com/free-proxy-list.html
 http,https://www.my-proxy.com/free-socks-4-proxy.html
 http,https://www.my-proxy.com/free-socks-5-proxy.html
 http,https://www.my-proxy.com/free-transparent-proxy.html
-http,https://www.proxy-list.download/api/v0/get?l=en&t=https
 http,https://www.proxy-list.download/api/v1/get?type=http
 http,https://www.proxyscan.io/download?type=http
 http,https://www.proxyscan.io/download?type=https
@@ -93,7 +91,6 @@ socks4,https://raw.githubusercontent.com/monosans/proxy-list/main/proxies_anonym
 socks4,https://raw.githubusercontent.com/roosterkid/openproxylist/main/SOCKS4_RAW.txt
 socks4,https://raw.githubusercontent.com/saschazesiger/Free-Proxies/master/proxies/socks4.txt
 socks4,https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/socks4.txt
-socks4,https://raw.githubusercontent.com/TheSpeedX/PROXY-List/blob/master/socks4.txt
 socks4,https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks4.txt
 socks4,https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks4.txt
 socks4,https://www.freeproxychecker.com/result/socks4_proxies.txt

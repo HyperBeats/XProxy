@@ -23,11 +23,12 @@ type ConfigStruct struct {
 	} `toml:"dev"`
 
 	Options struct {
-		Scrape          bool `toml:"scrape"`
-		Threads         int  `toml:"threads"`
-		ScrapeThreads   int  `toml:"scrape_threads"`
-		SaveTransparent bool `toml:"save_transparent"`
-		ShowDeadProxies bool `toml:"show_dead_proxies"`
+		Scrape           bool `toml:"scrape"`
+		Threads          int  `toml:"threads"`
+		ScrapeThreads    int  `toml:"scrape_threads"`
+		SaveTransparent  bool `toml:"save_transparent"`
+		ShowDeadProxies  bool `toml:"show_dead_proxies"`
+		RemoveUrlOnError bool `toml:"remove_url_on_error"`
 	} `toml:"options"`
 }
 
