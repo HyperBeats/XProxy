@@ -9,4 +9,4 @@ save_transparent = false         # transparent proxies don't hide your real IP.
 show_dead_proxies = false        # print dead proxies in console, disable it can give better performances
 
 [dev]
-debug = false                     # show errors
+debug = true                     # show errors

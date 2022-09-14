@@ -88,7 +88,7 @@ func RemoveLine(path string, line string) {
 		}
 	}
 
-	file, err = os.OpenFile(path, os.O_TRUNC|os.O_WRONLY, 0600)
+	file, err = os.OpenFile(fmt.Sprintf("data/%s", path), os.O_TRUNC|os.O_WRONLY, 0600)
 	if HandleError(err) {
 		return
 	}
