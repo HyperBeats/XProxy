@@ -1,5 +1,6 @@
 [filter]
 timeout = 5                     # proxies timeout in seconds.
+scrape_timeout = 10             # timeout for scraping proxies.
 
 [options]
 scrape = true                    # scrape proxies from url.csv.
@@ -10,4 +11,4 @@ show_dead_proxies = false        # print dead proxies in console, disable it can
 remove_url_on_error = true       # remove url from csv when program got error while scrapping page (timeout etc..)
 
 [dev]
-debug = true                     # show errors
+debug = false                     # show errors

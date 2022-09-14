@@ -80,7 +80,6 @@ socks4,https://api.proxyscrape.com/?request=displayproxies&proxytype=socks4&coun
 socks4,https://api.proxyscrape.com/v2/?request=displayproxies&protocol=socks4
 socks4,https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4
 socks4,https://dstat.one/proxies.php?id=4
-socks4,https://proxylist.geonode.com/api/proxy-list?limit=50&page=1&sort_by=lastChecked&sort_type=desc&protocols=socks4
 socks4,https://proxyspace.pro/socks4.txt
 socks4,https://raw.githubusercontent.com/B4RC0DE-TM/proxy-list/main/SOCKS4.txt
 socks4,https://raw.githubusercontent.com/HyperBeats/proxy-list/main/socks4.txt
@@ -106,7 +105,6 @@ socks5,https://api.proxyscrape.com/v2/?request=displayproxies&protocol=socks5
 socks5,https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5
 socks5,https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all&simplified=true
 socks5,https://dstat.one/proxies.php?id=5
-socks5,https://proxylist.geonode.com/api/proxy-list?limit=50&page=1&sort_by=lastChecked&sort_type=desc&protocols=socks5
 socks5,https://proxyspace.pro/socks5.txt
 socks5,https://raw.githubusercontent.com/B4RC0DE-TM/proxy-list/main/SOCKS5.txt
 socks5,https://raw.githubusercontent.com/hookzof/socks5_list/master/proxy.txt

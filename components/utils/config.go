@@ -29,6 +29,7 @@ type ConfigStruct struct {
 		SaveTransparent  bool `toml:"save_transparent"`
 		ShowDeadProxies  bool `toml:"show_dead_proxies"`
 		RemoveUrlOnError bool `toml:"remove_url_on_error"`
+		ScrapeTimeout    int  `toml:"scrape_timeout"`
 	} `toml:"options"`
 }
 

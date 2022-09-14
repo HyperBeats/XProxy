@@ -23,7 +23,7 @@ func RemoveUrl(Url string, ProxyType string) {
 
 func ScrapeUrl(Url string, ProxyType string) {
 	client := &http.Client{
-		Timeout: time.Second * 5,
+		Timeout: time.Second * time.Duration(utils.Config.Options.ScrapeTimeout),
 	}
 
 	res, err := client.Get(Url)
