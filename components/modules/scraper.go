@@ -29,7 +29,8 @@ func ScrapeUrl(Url string, ProxyType string) {
 	defer res.Body.Close()
 
 	if res.StatusCode == 403 || res.StatusCode == 404 {
-		utils.RemoveLine("url.csv", Url)
+		utils.Log(fmt.Sprintf("Dead link: %s", Url))
+		utils.RemoveLine("url.csv", fmt.Sprintf("%s,%s", ProxyType, Url))
 	}
 
 	content, err := ioutil.ReadAll(res.Body)

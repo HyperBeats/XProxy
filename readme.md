@@ -6,8 +6,8 @@
 - scrape proxies from url/public proxy list.
 - Support `http - socks4 - socks5`.
 - check for proxy anonymity level.
-- remove dead links.
 - scrape any webpage.
+- remove dead links.
 - ultra fast.
 
 ### Speed:
