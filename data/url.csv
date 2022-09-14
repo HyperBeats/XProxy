@@ -103,3 +103,7 @@ socks5,https://www.freeproxychecker.com/result/socks5_proxies.txt
 socks5,https://www.my-proxy.com/free-socks-5-proxy.html
 socks5,https://www.proxy-list.download/api/v1/get?type=socks5
 socks5,https://www.proxyscan.io/download?type=socks5
+socks5,https://dstat.one/proxies.php?id=5
+http,https://dstat.one/proxies.php?id=2
+http,https://dstat.one/proxies.php?id=3
+socks4,https://dstat.one/proxies.php?id=4
