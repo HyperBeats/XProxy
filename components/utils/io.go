@@ -72,5 +72,31 @@ func RemoveDuplicateStr(strSlice []string) []string {
     return list
 }
 
-// Remove line from file
-func 
+func RemoveLine(path string, line string) {
+	file, err := os.Open(path)
+	if HandleError(err) {
+		return
+	}
+
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+
+	var lines []string
+	for scanner.Scan() {
+		if scanner.Text() != line {
+			lines = append(lines, scanner.Text())
+		}
+	}
+
+	file, err = os.OpenFile(path, os.O_TRUNC|os.O_WRONLY, 0600)
+	if HandleError(err) {
+		return
+	}
+
+	defer file.Close()
+	for _, line := range lines {
+		if _, err = file.WriteString(line + "\n"); err != nil {
+			panic(err)
+		}
+	}
+}
