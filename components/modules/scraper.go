@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	proxyRegex = regexp.MustCompile(`([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}):([0-9]{1,5})`)
+	proxyRegex = regexp.MustCompile("([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}):([0-9]{1,5})")
 )
 
 func RemoveUrl(Url string, ProxyType string) {
