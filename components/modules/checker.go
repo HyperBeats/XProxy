@@ -59,6 +59,7 @@ func CheckProxy(Proxy string) {
 		if utils.Config.Options.ShowDeadProxies {
 			utils.Log(fmt.Sprintf("[DEAD]  %s", Proxy))
 		}
+		utils.Dead++
 		return
 	}
 
@@ -72,8 +73,19 @@ func CheckProxy(Proxy string) {
 	// Check if the proxy is "transparent"
 	is_elite := string(content) != utils.ActualIp
 
-	utils.Log(fmt.Sprintf("[ALIVE] [ELITE: %v] %s", is_elite, Proxy))
+	prox := strings.Split(Proxy, "://")
+
+	utils.Log(fmt.Sprintf("[ALIVE] [ELITE: %v] [%s] %s", is_elite, prox[0], prox[1]))
 	utils.Valid++
+
+	switch prox[0] {
+		case "http":
+			utils.Http++
+		case "socks4":
+			utils.Socks4++
+		case "socks5":
+			utils.Socks5++
+	}
 
 	if !is_elite && !utils.Config.Options.SaveTransparent {
 		return

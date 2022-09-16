@@ -2,8 +2,11 @@ package utils
 
 import (
 	"fmt"
+	"runtime"
 	"strings"
+	"syscall"
 	"time"
+	"unsafe"
 
 	"github.com/gookit/color"
 	"github.com/inancgumus/screen"
@@ -46,4 +49,24 @@ func HandleError(Err error) bool {
 	}
 
 	return false
+}
+
+func SetTitle(title string) {
+	if runtime.GOOS == "windows" {
+		handle, err := syscall.LoadLibrary("Kernel32.dll")
+		if HandleError(err) {
+			return
+		}
+		
+		defer syscall.FreeLibrary(handle)
+
+		proc, err := syscall.GetProcAddress(handle, "SetConsoleTitleW")
+		if HandleError(err) {
+			return
+		}
+
+		syscall.Syscall(proc, 1, uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(fmt.Sprintf("XProxy - github.com/its-vichy | %s", title)))), 0, 0)
+	} else {
+		fmt.Printf("\033]0;%s\007", title)
+	}
 }

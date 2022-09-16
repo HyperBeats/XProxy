@@ -1,6 +1,9 @@
 [filter]
 timeout = 3                     # proxies timeout in seconds.
 scrape_timeout = 10             # timeout for scraping proxies.
+http = true                     # scrape + check http proxies.
+socks4 = true                   # scrape + check socks4 proxies.
+socks5 = true                   # scrape + check socks5 proxies.
 
 [options]
 scrape = true                    # scrape proxies from url.csv.

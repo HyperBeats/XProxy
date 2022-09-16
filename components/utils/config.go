@@ -11,11 +11,19 @@ var (
 	Config   = ConfigStruct{}
 	ActualIp string
 	Valid    = 0
+
+	Socks4 = 0
+	Socks5 = 0
+	Http   = 0
+	Dead   = 0
 )
 
 type ConfigStruct struct {
 	Filter struct {
-		Timeout int `toml:"timeout"`
+		Timeout int  `toml:"timeout"`
+		Http    bool `toml:"http"`
+		Socks4  bool `toml:"socks4"`
+		Socks5  bool `toml:"socks5"`
 	} `toml:"filter"`
 
 	Dev struct {

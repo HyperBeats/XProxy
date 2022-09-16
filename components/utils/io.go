@@ -44,7 +44,6 @@ func ReadLines(path string) ([]string, error) {
 	return lines, nil
 }
 
-
 func AppendFile(FileName string, Content string) {
 	File, err := os.OpenFile(fmt.Sprintf("data/%s", FileName), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if HandleError(err) {
