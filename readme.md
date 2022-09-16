@@ -12,7 +12,7 @@
 
 ### Speed:
 - 100K+ scrape under 5s.
-- (800 goroutines) Checked 45973 proxies in 329.308784s.
+- (800 goroutines) Checked 55k proxies in 56s.
 
 ### Requirements:
 - golang 1.18+
