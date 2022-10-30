@@ -2,6 +2,7 @@ package modules
 
 import (
 	"Proxy/components/utils"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -53,7 +54,7 @@ func ProxyReq(req string, proxy string) (res *http.Response, err error) {
 }
 
 func CheckProxy(Proxy string) {
-	response, err := ProxyReq("https://api.ipify.org", Proxy)
+	response, err := ProxyReq("http://ip-api.com/json?fields=8194", Proxy)
 
 	if err != nil {
 		if utils.Config.Options.ShowDeadProxies {
@@ -70,21 +71,35 @@ func CheckProxy(Proxy string) {
 		return
 	}
 
-	// Check if the proxy is "transparent"
-	is_elite := string(content) != utils.ActualIp
+	var Resp HttpResponse
+	err = json.Unmarshal(content, &Resp)
+	if utils.HandleError(err) {
+		utils.Bad++
+		return
+	}
 
+	if utils.Config.Filter.Country[0] != "*" {
+		if !utils.InSlice(utils.Config.Filter.Country, Resp.CountryCode) {
+			utils.Log(fmt.Sprintf("[BAD] [COUNTRY: %s] %s", Resp.CountryCode, strings.Split(Proxy, "://")[1]))
+			utils.Bad++
+			return
+		}
+	}
+
+	// Check if the proxy is "transparent"
+	is_elite := string(Resp.Query) != utils.ActualIp
 	prox := strings.Split(Proxy, "://")
 
-	utils.Log(fmt.Sprintf("[ALIVE] [ELITE: %v] [%s] %s", is_elite, prox[0], prox[1]))
+	utils.Log(fmt.Sprintf("[ALIVE] [ELITE: %v] [COUNTRY: %s] [%s] %s", is_elite, Resp.CountryCode, prox[0], prox[1]))
 	utils.Valid++
 
 	switch prox[0] {
-		case "http":
-			utils.Http++
-		case "socks4":
-			utils.Socks4++
-		case "socks5":
-			utils.Socks5++
+	case "http":
+		utils.Http++
+	case "socks4":
+		utils.Socks4++
+	case "socks5":
+		utils.Socks5++
 	}
 
 	if !is_elite && !utils.Config.Options.SaveTransparent {

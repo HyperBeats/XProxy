@@ -16,30 +16,30 @@ var (
 	Socks5 = 0
 	Http   = 0
 	Dead   = 0
+	Bad    = 0
 )
 
 type ConfigStruct struct {
 	Filter struct {
-		Timeout int  `toml:"timeout"`
-		Http    bool `toml:"http"`
-		Socks4  bool `toml:"socks4"`
-		Socks5  bool `toml:"socks5"`
+		Timeout       int      `toml:"timeout"`
+		ScrapeTimeout int      `toml:"scrape_timeout"`
+		HTTP          bool     `toml:"http"`
+		Socks4        bool     `toml:"socks4"`
+		Socks5        bool     `toml:"socks5"`
+		Country       []string `toml:"country"`
 	} `toml:"filter"`
-
-	Dev struct {
-		Debug bool `toml:"debug"`
-	} `toml:"dev"`
-
 	Options struct {
 		Scrape              bool `toml:"scrape"`
 		Threads             int  `toml:"threads"`
 		ScrapeThreads       int  `toml:"scrape_threads"`
 		SaveTransparent     bool `toml:"save_transparent"`
 		ShowDeadProxies     bool `toml:"show_dead_proxies"`
-		RemoveUrlOnError    bool `toml:"remove_url_on_error"`
-		ScrapeTimeout       int  `toml:"scrape_timeout"`
+		RemoveURLOnError    bool `toml:"remove_url_on_error"`
 		CheckScrapedProxies bool `toml:"check_scraped_proxies"`
 	} `toml:"options"`
+	Dev struct {
+		Debug bool `toml:"debug"`
+	} `toml:"dev"`
 }
 
 func GetActualIp() string {

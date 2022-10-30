@@ -4,8 +4,9 @@
 
 ### Features:
 - scrape proxies from url/public proxy list.
-- Support `http - socks4 - socks5`.
+- Keep only proxies from one country.
 - check for proxy anonymity level.
+- Support `http, socks4, socks5`.
 - scrape any webpage.
 - remove dead links.
 - ultra fast.
@@ -20,6 +21,7 @@
 
 ### Download:
 - download the lasted compiled version [here](https://github.com/Its-Vichy/XProxy/releases/tag/lasted).
+- build from src using `go build .`
 
 ### Known issue:
 - [FIXED] Checker crash if there is invalid format into proxies file, this can happen if you are using scraper.

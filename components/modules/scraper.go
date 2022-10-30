@@ -23,12 +23,12 @@ func RemoveUrl(Url string, ProxyType string) {
 
 func ScrapeUrl(Url string, ProxyType string) {
 	client := &http.Client{
-		Timeout: time.Second * time.Duration(utils.Config.Options.ScrapeTimeout),
+		Timeout: time.Second * time.Duration(utils.Config.Filter.ScrapeTimeout),
 	}
 
 	res, err := client.Get(Url)
 	if utils.HandleError(err) {
-		if utils.Config.Options.RemoveUrlOnError {
+		if utils.Config.Options.RemoveURLOnError {
 			RemoveUrl(Url, ProxyType)
 		}
 		return
@@ -74,7 +74,7 @@ func Scrape() {
 		// * type,url
 		s := strings.Split(url, ",")
 
-		if s[0] == "http" && !utils.Config.Filter.Http || s[0] == "socks4" && !utils.Config.Filter.Socks4 || s[0] == "socks5" && !utils.Config.Filter.Socks5 {
+		if s[0] == "http" && !utils.Config.Filter.HTTP || s[0] == "socks4" && !utils.Config.Filter.Socks4 || s[0] == "socks5" && !utils.Config.Filter.Socks5 {
 			return
 		}
 
@@ -90,7 +90,7 @@ func Scrape() {
 
 	c.WaitAllDone()
 	utils.Log(fmt.Sprintf("Scraped %d urls in %fs | HTTP: %d, SOCKS4: %d, SOCKS5: %d", len(url_list), time.Since(StartTime).Seconds(), utils.Http, utils.Socks4, utils.Socks5))
-	
+
 	// reset counter for checking lel
-	utils.Http , utils.Socks4, utils.Socks5 = 0, 0, 0
+	utils.Http, utils.Socks4, utils.Socks5 = 0, 0, 0
 }
