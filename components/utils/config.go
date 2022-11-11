@@ -27,6 +27,8 @@ type ConfigStruct struct {
 		Socks4        bool     `toml:"socks4"`
 		Socks5        bool     `toml:"socks5"`
 		Country       []string `toml:"country"`
+		URLCustom     string   `toml:"url_custom"`
+		Match         string   `toml:"match"`
 	} `toml:"filter"`
 	Options struct {
 		Scrape              bool `toml:"scrape"`
@@ -36,6 +38,7 @@ type ConfigStruct struct {
 		ShowDeadProxies     bool `toml:"show_dead_proxies"`
 		RemoveURLOnError    bool `toml:"remove_url_on_error"`
 		CheckScrapedProxies bool `toml:"check_scraped_proxies"`
+		EnableCustomURL     bool `toml:"enable_custom_url"`
 	} `toml:"options"`
 	Dev struct {
 		Debug bool `toml:"debug"`

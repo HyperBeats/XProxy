@@ -90,6 +90,28 @@ func CheckProxy(Proxy string) {
 	is_elite := string(Resp.Query) != utils.ActualIp
 	prox := strings.Split(Proxy, "://")
 
+	if utils.Config.Options.EnableCustomURL {
+		response, err = ProxyReq(utils.Config.Filter.URLCustom, Proxy)
+		if err != nil {
+			utils.Log(fmt.Sprintf("[DEAD] [ELITE: %t] %s", is_elite, prox[1]))
+			utils.Dead++
+			return
+		}
+
+		defer response.Body.Close()
+
+		content, err = ioutil.ReadAll(response.Body)
+		if utils.HandleError(err) {
+			return
+		}
+
+		if !strings.Contains(string(content), utils.Config.Filter.Match) {
+			utils.Log(fmt.Sprintf("[BAD] [ELITE: %t] [URL: %s] %s", is_elite, utils.Config.Filter.URLCustom, prox[1]))
+			utils.Bad++
+			return
+		}
+	}
+
 	utils.Log(fmt.Sprintf("[ALIVE] [ELITE: %v] [COUNTRY: %s] [%s] %s", is_elite, Resp.CountryCode, prox[0], prox[1]))
 	utils.Valid++
 

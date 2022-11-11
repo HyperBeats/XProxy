@@ -7,6 +7,7 @@
 - Keep only proxies from one country.
 - check for proxy anonymity level.
 - Support `http, socks4, socks5`.
+- match custom url page.
 - scrape any webpage.
 - remove dead links.
 - ultra fast.
